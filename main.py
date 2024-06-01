@@ -12,14 +12,13 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy.orm import relationship
 # Import your forms from the forms.py
 from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
-
+import os
 '''
 Make sure the required packages are installed: 
 Open the Terminal in PyCharm (bottom left). 
 
-On Windows type:
+On Windows type
 python -m pip install -r requirements.txt
-
 On MacOS type:
 pip3 install -r requirements.txt
 
@@ -30,8 +29,8 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 ckeditor = CKEditor(app)
 Bootstrap5(app)
-
-# Configure Flask-Login
+key=os.environ.get("SECRET")
+print(key)# Configure Flask-Login
 login_manager = LoginManager()
 login_manager.init_app(app)
 
